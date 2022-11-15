@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Tests embargoed. Test your code based on the instructions. ",
+      "setup": "",
+      "run": "ls package.json",
+      "input": "",
+      "output": "This test will fail.",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 50000
+    }
+  ]
+}
