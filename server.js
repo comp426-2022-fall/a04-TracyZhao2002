@@ -6,6 +6,7 @@ import minimist from 'minimist';
 import { roll } from './lib/roll.js';
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 const args = minimist(process.argv.slice(2));
 
   // Setting port (#1)
@@ -14,7 +15,6 @@ const args = minimist(process.argv.slice(2));
     port = args.port;
   }
 
-  app.use(express.urlencoded({ extended: true }));
 
   // Checking endpoint (#3)
   app.get('/app/', (req, res) => {
@@ -33,20 +33,20 @@ const args = minimist(process.argv.slice(2));
   });
 
   // #6
-  app.get('/app/roll/:sides/', (req, res, next) => {
+  app.get('/app/roll/:sides/', (req, res) => {
     const sides = parseInt(req.params.sides);
     res.send(roll(sides, 2, 1));
   });
 
   // #7
-  app.get('/app/roll/:sides/:dice/', (req, res, next) => {
-    const dice = parseInt(req.params.dice);
+  app.get('/app/roll/:sides/:dice/', (req, res) => {
     const sides = parseInt(req.params.sides);
+    const dice = parseInt(req.params.dice);
     res.send(roll(sides, dice, 1));
   });
 
   // #8
-  app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
+  app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
     const sides =  parseInt(req.params.sides);
     const dice = parseInt(req.params.dice);
     const rolls = parseInt(req.params.rolls);
