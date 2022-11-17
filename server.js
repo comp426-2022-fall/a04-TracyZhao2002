@@ -25,10 +25,10 @@ const args = minimist(process.argv.slice(2));
   });
 
   // #5
-  app.get('/app/roll/', (req, res) => {
-    const sides = parseInt(req.params.sides);
-    const dice = parseInt(req.params.dice);
-    const rolls = parseInt(req.params.rolls);
+  app.post('/app/roll/', (req, res) => {
+    const sides = parseInt(req.body.sides);
+    const dice = parseInt(req.body.dice);
+    const rolls = parseInt(req.body.rolls);
     console.log(roll(sides, dice, rolls));
     res.send(roll(sides, dice, rolls));
   });
