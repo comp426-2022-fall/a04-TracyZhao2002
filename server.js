@@ -18,12 +18,14 @@ const args = minimist(process.argv.slice(2));
     res.send("200 OK");
   });
 
-  // #4 & 5
+  // #4
   app.get("/app/roll/", (req, res) => {
     console.log(roll(6, 2, 1));
     res.send(roll(6, 2, 1));
   });
-  app.post('/app/roll/', (req, res) => {
+
+  // #5
+  app.get('/app/roll/', (req, res) => {
     const sides = parseInt(req.params.sides);
     const dice = parseInt(req.params.dice);
     const rolls = parseInt(req.params.rolls);
